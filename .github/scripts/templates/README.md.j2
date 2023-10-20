@@ -63,8 +63,13 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[erigon](https://github.com/ngnodehq/containers/pkgs/container/erigon) | stable | ghcr.io/ngnodehq/erigon |![2](https://img.shields.io/badge/2-blue?style=flat-square) ![2.52](https://img.shields.io/badge/2.52-blue?style=flat-square) ![2.52.5](https://img.shields.io/badge/2.52.5-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
-
+{% for image in app_images | sort(attribute="name") -%}
+[{{ image.name }}]({{ image.html_url }}) | {{ image.channel }} | ghcr.io/ngnodehq/{{ image.name }} |
+{%- set space = joiner(" ") -%}
+{%- for tag in image.tags -%}
+{{ space() }}![{{ tag }}](https://img.shields.io/badge/{{ tag.replace("-", "--") }}-{% if tag == "latest" %}green{% else %}blue{% endif %}?style=flat-square)
+{%- endfor %}
+{% endfor %}
 
 ### Automated tags
 
