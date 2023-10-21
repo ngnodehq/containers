@@ -1,4 +1,4 @@
-FROM ghcr.io/ngnodehq/alpine:rolling@sha256:532755d67f53160c572ea416407386867000f115efc82c5b96a50f1e284b2468 as builder
+FROM ghcr.io/ngnodehq/alpine:rolling@sha256:c81d62940e867521029f666edad37b849066dfc3bc6c0d7880ce37f2d20d9cd4 as builder
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -26,7 +26,7 @@ RUN \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 
-FROM ghcr.io/ngnodehq/alpine:rolling@sha256:532755d67f53160c572ea416407386867000f115efc82c5b96a50f1e284b2468
+FROM ghcr.io/ngnodehq/alpine:rolling@sha256:c81d62940e867521029f666edad37b849066dfc3bc6c0d7880ce37f2d20d9cd4
 
 # hadolint ignore=DL3008
 RUN \
