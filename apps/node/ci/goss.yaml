@@ -1,0 +1,7 @@
+---
+# https://github.com/goss-org/goss/blob/master/docs/manual.md#command
+command:
+  'node --version':
+    exit-status: 0
+  'npm --version':
+    exit-status: 0

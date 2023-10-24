@@ -1,0 +1,10 @@
+---
+app: node
+base: true
+channels:
+  - name: "lts-alpine3.18"
+    platforms: ["linux/amd64"]
+    stable: true
+    tests:
+      enabled: true
+      type: cli
