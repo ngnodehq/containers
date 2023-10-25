@@ -1,0 +1,6 @@
+repos:
+  # Dockerfile
+  - repo: https://github.com/hadenlabs/pre-commit-hooks
+    rev: e50751c9323b0a03f27271c57513f5c389f6591b
+    hooks:
+      - id: hadolint
