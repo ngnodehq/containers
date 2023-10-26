@@ -63,7 +63,7 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[erigon](https://github.com/ngnodehq/containers/pkgs/container/erigon) | stable | ghcr.io/ngnodehq/erigon |![2](https://img.shields.io/badge/2-blue?style=flat-square) ![2.52](https://img.shields.io/badge/2.52-blue?style=flat-square) ![2.52.5](https://img.shields.io/badge/2.52.5-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[erigon](https://github.com/ngnodehq/containers/pkgs/container/erigon) | stable | ghcr.io/ngnodehq/erigon |![2](https://img.shields.io/badge/2-blue?style=flat-square) ![2.53](https://img.shields.io/badge/2.53-blue?style=flat-square) ![2.53.0](https://img.shields.io/badge/2.53.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
 
 ### Automated tags
