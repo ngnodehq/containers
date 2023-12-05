@@ -40,7 +40,7 @@ RUN \
 COPY --from=builder /app/build/bin/erigon /app/
 COPY --from=builder /app/build/bin/integration /app/
 
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./apps/erigon/entrypoint.sh /entrypoint.sh
 
 EXPOSE 8545 \
   8551 \
