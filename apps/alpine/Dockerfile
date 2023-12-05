@@ -71,6 +71,6 @@ RUN \
     && rm -rf /tmp/*
 
 VOLUME ["/config"]
-COPY ./scripts /scripts
+COPY ./apps/alpine/scripts /scripts
 COPY --from=builder /go/bin/envsubst /usr/local/bin/envsubst
 ENTRYPOINT ["/sbin/tini", "--"]
