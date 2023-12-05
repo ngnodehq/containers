@@ -320,7 +320,7 @@ jobs:
 
       - name: Build failed
         id: build-failed
-        if: ${{ always() && (steps.merge.outcome == 'failure' || steps.inspect.outcome == 'failure') }}
+        if: ${{ always() && (steps.merge.outcome == 'failure' || steps.inspect.outcome == 'failure' || steps.ensure-platforms.outcome == 'failure') }}
         shell: bash
         run: |
           echo "message=💥 ${{ matrix.image.name }} (${{ matrix.image.tags[1] }})" >> $GITHUB_OUTPUT
