@@ -9,29 +9,30 @@ on:
   workflow_dispatch:
     inputs:
       appsToBuild:
-        description: "Which apps to release"
+        description: App(s) to build
         required: false
         type: string
-        default: "all"
+        default: all
       force:
-        description: "Rebuild images regardless of whether version has changed"
+        description: Force rebuild
         type: boolean
         default: false
         required: true
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "0 * * * *"
 
 jobs:
   simple-checks:
     name: Simple Checks
-    uses: ./.github/workflows/simple-checks.yaml
+    uses: ngnodehq/containers/.github/workflows/simple-checks.yaml@main
 
   build-images:
     name: Build Images
     needs: simple-checks
-    uses: ./.github/workflows/build-images.yaml
+    uses: ngnodehq/containers/.github/workflows/build-images.yaml@main
     secrets: inherit
     permissions:
+      contents: read
       packages: write
     with:
       appsToBuild: ${{ inputs.appsToBuild }}
