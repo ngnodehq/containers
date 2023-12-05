@@ -5,10 +5,10 @@ on:
   workflow_call:
     secrets:
       BOT_APP_ID:
-        description: "The ID of the GitHub App"
+        description: The App ID of the GitHub App
         required: true
       BOT_APP_PRIVATE_KEY:
-        description: "The private key of the GitHub App"
+        description: The private key of the GitHub App
         required: true
 
 jobs:
@@ -16,38 +16,49 @@ jobs:
     name: Render README
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Generate Token
+        uses: actions/create-github-app-token@46e4a501e119d39574a54e53a06c9a705efc55c9 # v1.6.1
+        id: app-token
         with:
-          fetch-depth: 0
+          app-id: "${{ secrets.BOT_APP_ID }}"
+          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          token: "${{ steps.app-token.outputs.token }}"
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@b64ffcaf5b410884ad320a9cfac8866006a109aa # v4.8.0
         with:
-          python-version: '3.9'
-          cache: 'pip' # caching pip dependencies
+          python-version: 3.x
+          cache: pip
 
       - name: Install Python Requirements
-        run: |
-          pip install -r ./.github/scripts/requirements.txt && pip freeze
-
-      - name: Generate Token
-        uses: tibdex/github-app-token@v2
-        id: generate-token
-        with:
-          app_id: "${{ secrets.BOT_APP_ID }}"
-          private_key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+        shell: bash
+        run: pip install -r ./.github/scripts/requirements.txt && pip freeze
 
       - name: Render README
         env:
-          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
-        run: |
-          python ./.github/scripts/render-readme.py
+          GITHUB_TOKEN: "${{ steps.app-token.outputs.token }}"
+        shell: bash
+        run: python ./.github/scripts/render-readme.py
 
       - name: Commit Changes
+        env:
+          GITHUB_TOKEN: "${{ steps.app-token.outputs.token }}"
+          FILE_TO_COMMIT: README.md
+          DESTINATION_BRANCH: main
         run: |
-          git config --global user.name "bot-ngn"
-          git config --global user.email "148580920+bot-ngn[bot]@users.noreply.github.com"
-          git add ./README.md
-          git commit -m "chore: Render README.md" || echo "No changes to commit"
-          git push origin || echo "No changes to push"
+          if git diff --name-only | grep -q "$FILE_TO_COMMIT"; then
+            export TODAY=$(date -u '+%Y-%m-%d')
+            export MESSAGE="chore: regenerate $FILE_TO_COMMIT for $TODAY [skip ci]"
+            export SHA=$(git rev-parse $DESTINATION_BRANCH:$FILE_TO_COMMIT)
+            export CONTENT=$(base64 -i $FILE_TO_COMMIT)
+            gh api --method PUT /repos/:owner/:repo/contents/$FILE_TO_COMMIT \
+                --field message="$MESSAGE" \
+                --field content="$CONTENT" \
+                --field encoding="base64" \
+                --field branch="$DESTINATION_BRANCH" \
+                --field sha="$SHA"
+          fi
