@@ -5,7 +5,7 @@ ARG VERSION
 ARG CHANNEL
 
 # renovate: datasource=golang-version depName=golang
-ENV GO_VERSION=1.21.2
+ENV GO_VERSION=1.21.5
 
 #hadolint ignore=DL3018
 RUN \
@@ -40,7 +40,7 @@ RUN \
 COPY --from=builder /app/build/bin/erigon /app/
 COPY --from=builder /app/build/bin/integration /app/
 
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./apps/erigon/entrypoint.sh /entrypoint.sh
 
 EXPOSE 8545 \
   8551 \
