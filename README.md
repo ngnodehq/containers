@@ -7,7 +7,7 @@ to edit this file, instead edit its template at: ./github/scripts/templates/READ
 
 ## Containers
 
-_A Collection of Container Images Optimized for Kubernetes_
+_An opinionated collection of container images_
 
 </div>
 
@@ -16,6 +16,8 @@ _A Collection of Container Images Optimized for Kubernetes_
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/ngnodehq/containers/release-scheduled.yaml?style=for-the-badge&label=Scheduled%20Release)
 
 </div>
+
+Welcome to our container images, if looking for a container start by [browsing the GitHub Packages page for this repo's packages](https://github.com/ngnodehq?tab=packages&repo_name=containers).
 
 ## Mission statement
 
@@ -65,6 +67,20 @@ Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
 [erigon](https://github.com/ngnodehq/containers/pkgs/container/erigon) | stable | ghcr.io/ngnodehq/erigon |![2](https://img.shields.io/badge/2-blue?style=flat-square) ![2.55](https://img.shields.io/badge/2.55-blue?style=flat-square) ![2.55.0](https://img.shields.io/badge/2.55.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
+
+## Contributing
+
+1. Install [Docker](https://docs.docker.com/get-docker/), [Taskfile](https://taskfile.dev/) & [Cuelang](https://cuelang.org/)
+2. Get familiar with the structure of the repositroy
+3. Find a similar application in the apps directory
+4. Copy & Paste an application and update the directory name
+5. Update `metadata.json`, `Dockerfile`, `ci/latest.sh`, `ci/goss.yaml` and make it suit the application build
+6. Include any additional files if required
+7. Use Taskfile to build and test your image
+
+    ```ruby
+    task APP=sonarr CHANNEL=main test
+    ```
 
 ### Automated tags
 
