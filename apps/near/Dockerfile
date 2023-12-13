@@ -60,7 +60,6 @@ WORKDIR /app
 # Compile nearcore binary
 # Use --mount=type=cache to cache the cargo build dependencies
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
-    --mount=type=cache,target=/app/target \
     make neard && \
     chown -R ngn:ngn /app && \
     chmod -R u=rwX,go=rX /app
