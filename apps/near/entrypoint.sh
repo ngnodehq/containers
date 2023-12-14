@@ -1,12 +1,14 @@
-#!/bin/sh
-set -e
+#!/usr/bin/env bash
+
+#shellcheck disable=SC1091
+test -f "/scripts/umask.sh" && source "/scripts/umask.sh"
 
 NEAR_HOME=${NEAR_HOME:-/config}
 export NEAR_HOME
 
-if [ -n "$INIT" ]; then
-    neard init ${CHAIN_ID:+--chain-id="$CHAIN_ID"} \
-               ${ACCOUNT_ID:+--account-id="$ACCOUNT_ID"}
+if [[ ! -f "${NEAR_HOME}/config.json" ]]; then
+    echo "Launch init procedure..."
+    /app/neard init ${CHAIN_ID:+--chain-id=localnet}
 fi
 
 if [ -n "$NODE_KEY" ]; then
@@ -15,10 +17,7 @@ if [ -n "$NODE_KEY" ]; then
 EOF
 fi
 
-ulimit -c unlimited
-
-echo "Telemetry: ${TELEMETRY_URL}"
-echo "Bootnodes: ${BOOT_NODES}"
-
-exec /app/neard run ${TELEMETRY_URL:+--telemetry-url="$TELEMETRY_URL"} \
-               ${BOOT_NODES:+--boot-nodes="$BOOT_NODES"} "$@"
+exec \
+    /app/neard \
+        run \
+        "$@"

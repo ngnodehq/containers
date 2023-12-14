@@ -10,9 +10,12 @@ ARG CHANNEL
 # Set up environment variables for Rust and Cargo
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
-    PATH=/usr/local/cargo/bin:$PATH \
-    RUST_VERSION=1.74.1 \
-    RUSTUP_VERSION=1.26.0
+    PATH=/usr/local/cargo/bin:$PATH
+
+# renovate: datasource=github-tags depName=rust-lang/rust
+ENV RUST_VERSION=1.74.1
+# renovate: datasource=github-tags depName=rust-lang/rustup
+ENV RUSTUP_VERSION=1.26.0
 
 # Install necessary dependencies and tools
 RUN set -eux; \
@@ -74,14 +77,14 @@ RUN apt-get update && apt-get install -y libssl-dev ca-certificates && rm -rf /v
 # Set the working directory in the new image
 WORKDIR /config
 
+# Switch to the non-root user
+USER ngn
+
 # Copy docker entrypoint
 COPY ./apps/near/entrypoint.sh /entrypoint.sh
 
 # Copy the compiled binary from the builder stage
 COPY --from=builder /app/target/release/neard /app
-
-# Switch to the non-root user
-USER ngn
 
 # Expose the ports that NEAR node uses
 EXPOSE 3030 24567
