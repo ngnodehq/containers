@@ -65,7 +65,9 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
+[celo](https://github.com/ngnodehq/containers/pkgs/container/celo) | stable | ghcr.io/ngnodehq/celo |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.8](https://img.shields.io/badge/1.8-blue?style=flat-square) ![1.8.0](https://img.shields.io/badge/1.8.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [erigon](https://github.com/ngnodehq/containers/pkgs/container/erigon) | stable | ghcr.io/ngnodehq/erigon |![2](https://img.shields.io/badge/2-blue?style=flat-square) ![2.55](https://img.shields.io/badge/2.55-blue?style=flat-square) ![2.55.1](https://img.shields.io/badge/2.55.1-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[near](https://github.com/ngnodehq/containers/pkgs/container/near) | stable | ghcr.io/ngnodehq/near |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.36](https://img.shields.io/badge/1.36-blue?style=flat-square) ![1.36.1](https://img.shields.io/badge/1.36.1-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
 
 ## Contributing
