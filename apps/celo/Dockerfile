@@ -8,7 +8,7 @@ ARG VERSION
 ARG CHANNEL
 
 # Set the Go version to use for the build
-ENV GO_VERSION=1.17.13
+ENV GO_VERSION=1.21.5
 
 # Install necessary build dependencies, including Bash
 RUN \
