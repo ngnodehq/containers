@@ -7,12 +7,12 @@ ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
-# Set the Go version to use for the build
+# renovate: datasource=golang-version depName=golang
 ENV GO_VERSION=1.21.5
 
 # Install necessary build dependencies, including Bash
 RUN \
-  apt-get update && apt-get install -y build-essential golang make coreutils git sed musl-dev && \
+  apt-get update && apt-get install -y build-essential make coreutils git sed musl-dev && \
   rm -rf /var/lib/apt/lists/* && \
   curl -fsSl -o /tmp/go.tar.gz https://dl.google.com/go/go${GO_VERSION}.$(echo ${TARGETPLATFORM} | sed 's#\/#-#g').tar.gz && \
   tar -C /usr/local -xzf /tmp/go.tar.gz && \
