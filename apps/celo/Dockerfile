@@ -1,6 +1,6 @@
 # Stage 1: Building the CELO node
 # Use a specific Alpine image as a base for the builder stage
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:63881a8ec3460f20e70d6ffd798d8d933a47747ce98acb1d4b910fcaddc6619d as builder
+FROM ghcr.io/ngnodehq/debian:rolling@sha256:60483af8a143c104a9975b593a7f2ca0589158a602730cb0a80e7af7444293f9 as builder
 
 # Define build arguments like target platform, version, and channel
 ARG TARGETPLATFORM
@@ -32,7 +32,7 @@ RUN \
 
 # Stage 2: Create the final image with only the compiled binary
 # Use specific Debian Slim for the final image
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:63881a8ec3460f20e70d6ffd798d8d933a47747ce98acb1d4b910fcaddc6619d
+FROM ghcr.io/ngnodehq/debian:rolling@sha256:60483af8a143c104a9975b593a7f2ca0589158a602730cb0a80e7af7444293f9
 
 # Install runtime dependencies and perform clean-up of unnecessary files
 RUN apt-get update && apt-get install -y libssl-dev ca-certificates && rm -rf /var/lib/apt/lists/*
