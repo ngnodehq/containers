@@ -1,6 +1,6 @@
 # Stage 1: Building the NEAR node
 # Use a specific Debian slim image as a base for the builder stage
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:60483af8a143c104a9975b593a7f2ca0589158a602730cb0a80e7af7444293f9 as builder
+FROM ghcr.io/ngnodehq/debian:rolling@sha256:5f30136db214199006174efbdb68b10c9e01e74d9b65ff3a33a6efd85010185f as builder
 
 # Define build arguments like target platform, version, and channel
 ARG TARGETPLATFORM
@@ -69,7 +69,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
 
 # Stage 2: Create the final image with only the compiled binary
 # Use specific Debian Slim for the final image
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:60483af8a143c104a9975b593a7f2ca0589158a602730cb0a80e7af7444293f9
+FROM ghcr.io/ngnodehq/debian:rolling@sha256:5f30136db214199006174efbdb68b10c9e01e74d9b65ff3a33a6efd85010185f
 
 # Install any runtime dependencies your application needs
 RUN apt-get update && apt-get install -y libssl-dev ca-certificates && rm -rf /var/lib/apt/lists/*
