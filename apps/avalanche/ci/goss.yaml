@@ -1,0 +1,13 @@
+---
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#process
+process:
+  avalanchego:
+    running: true
+
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#command
+command:
+  "curl -X POST --data '{\"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"info.isBootstrapped\", \"params\": {\"chain\": \"X\"}}' -H 'content-type:application/json;' http://127.0.0.1:9650/ext/info":
+    exit-status: 0
+    stdout:
+      - '{"jsonrpc":"2.0","result":{"isBootstrapped":false},"id":1}'
+    timeout: 5000
