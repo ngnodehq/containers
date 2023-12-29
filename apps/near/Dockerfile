@@ -13,7 +13,7 @@ ENV RUSTUP_HOME=/usr/local/rustup \
     PATH=/usr/local/cargo/bin:$PATH
 
 # renovate: datasource=github-tags depName=rust-lang/rust
-ENV RUST_VERSION=1.74.1
+ENV RUST_VERSION=1.75.0
 # renovate: datasource=github-tags depName=rust-lang/rustup
 ENV RUSTUP_VERSION=1.26.0
 
