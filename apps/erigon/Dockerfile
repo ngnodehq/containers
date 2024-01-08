@@ -22,7 +22,7 @@ RUN \
   --mount=type=cache,target=/tmp/go-build \
   --mount=type=cache,target=/go/pkg/mod \
   export PATH="$PATH:/usr/local/go/bin" && \
-  make all && \
+  make BUILD_TAGS=nosqlite,noboltdb,nosilkworm all && \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 
