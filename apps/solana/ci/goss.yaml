@@ -1,0 +1,10 @@
+---
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#process
+process:
+  solana-validator:
+    running: true
+
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#port
+port:
+  tcp:8899:
+    listening: true
