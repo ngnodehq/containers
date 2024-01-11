@@ -9,7 +9,7 @@ The script performs the following actions:
 1. Sources the `umask.sh` script from the /scripts directory, if it exists, to set up the correct file creation permissions.
 2. Executes the `erigon` process with the specified arguments to run the Celo node.
 
-## Usage
+### Usage
 The script will start the Erigon node using `erigon` with the specified parameters:
   - Data directory set to `/config`.
   - HTTP server enabled.
@@ -17,5 +17,5 @@ The script will start the Erigon node using `erigon` with the specified paramete
   - HTTP server port set to `8545`.
   - Allowing all HTTP virtual hosts.
 
-## Customization
+### Customization
 You can modify the `entrypoint.sh` script to change the parameters used to start the Erigon node. For example, you can change the HTTP server port or restrict the HTTP server to listen on a specific interface.

@@ -11,7 +11,7 @@ The script performs the following actions:
 3. Waits for a second to ensure the terminal settings are applied.
 4. Executes the `geth` process with the specified arguments to run the Celo node.
 
-## Usage
+### Usage
 The script will start the Celo node using `geth` with the specified parameters:
   - Data directory set to `/config`.
   - HTTP server enabled.
@@ -19,5 +19,5 @@ The script will start the Celo node using `geth` with the specified parameters:
   - HTTP server port set to `8545`.
   - Allowing all HTTP virtual hosts.
 
-## Customization
+### Customization
 You can modify the `entrypoint.sh` script to change the parameters used to start the Celo node. For example, you can change the HTTP server port or restrict the HTTP server to listen on a specific interface.

@@ -10,11 +10,11 @@ The `entrypoint.sh` script automates the following tasks:
 1. Sources the `umask.sh` script from the `/scripts` directory, if it exists, to set up the correct file creation permissions.
 2. Executes the `avalanchego` process with the specified parameters to run the Avalanche node.
 
-## Usage 
+### Usage
 The script will start the Avalanche node using `avalanchego` with the specified parameters:
   - Data directory set to `/config`.
   - HTTP server listening on all interfaces (`0.0.0.0`).
 
-## Customization
-You can modify the `entrypoint.sh`` script to adjust the parameters used to start the Avalanche node.
+### Customization
+You can modify the `entrypoint.sh` script to adjust the parameters used to start the Avalanche node.
 For example, you can change the `--data-dir` to specify a different directory for blockchain data or adjust the `--http-host` to change the listening interface.
