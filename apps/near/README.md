@@ -14,10 +14,10 @@ The entrypoint.sh script automates the following tasks:
 3. If the `NODE_KEY` environment variable is set, the script creates a `node_key.json` file in the `NEAR_HOME` directory with the provided node key.
 4. Executes the NEAR daemon (`neard`) with any additional arguments passed to the script.
 
-## Usage Instructions
+### Usage Instructions
 1. Modify the entrypoint.sh script as needed to suit your configuration requirements.
 
-## Customization
+### Customization
 - You can modify the `entrypoint.sh` script to change NEAR node configurations.
 - Environment variables such as `NEAR_HOME` and `NODE_KEY` can be set to customize the node's behavior.
 - Additional arguments to the `neard` command can be passed through the Docker run command.
