@@ -8,7 +8,7 @@ ARG VERSION
 ARG CHANNEL
 
 # renovate: datasource=golang-version depName=golang
-ENV GO_VERSION=1.21.6
+ENV GO_VERSION=1.22.0
 
 # Install necessary build dependencies, including Bash
 RUN \
