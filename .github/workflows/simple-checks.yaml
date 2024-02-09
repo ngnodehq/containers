@@ -10,26 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-
-      - name: Collect changed files
-        uses: dorny/paths-filter@7267a8516b6f92bdb098633497bad573efdbf271 # v2.12.0
-        id: filter
+        uses: actions/checkout@v4
         with:
-          list-files: shell
-          filters: |
+          fetch-depth: 0
+
+      - name: Get Changed Files
+        id: changed-files
+        uses: tj-actions/changed-files@v42
+        with:
+          files_yaml: |
             cue:
-              - added|modified: "apps/**/metadata.yaml"
-              - added|modified: "apps/**/metadata.json"
-              - added|modified: "./metadata.rules.cue"
+              - metadata.rules.cue
+              - apps/**/metadata.json
+              - apps/**/metadata.yaml
 
       - name: Setup CUE
-        if: ${{ steps.filter.outputs.cue == 'true' }}
-        uses: cue-lang/setup-cue@1713281ae501e533ff06108005dffeab9e2e5203 # v1.0.0
+        if: ${{ steps.changed-files.outputs.cue_any_changed == 'true' }}
+        uses: cue-lang/setup-cue@v1.0.0
 
       # Run against all files to ensure they are tested if the cue schema is changed.
       - name: Validate image metadata
-        if: ${{ steps.filter.outputs.cue == 'true' }}
+        if: ${{ steps.changed-files.outputs.cue_any_changed == 'true' }}
         shell: bash
         run: |
           find ./apps/ -name metadata.json | xargs -I {} cue vet --schema '#Spec' {} ./metadata.rules.cue
