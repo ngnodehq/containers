@@ -256,6 +256,7 @@ jobs:
         run: echo "LOWERCASE_REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> "${GITHUB_ENV}"
 
       - name: Download Digests
+        id: download
         uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
         with:
           name: ${{ matrix.image.name }}
@@ -320,7 +321,7 @@ jobs:
 
       - name: Build failed
         id: build-failed
-        if: ${{ always() && (steps.merge.outcome == 'failure' || steps.inspect.outcome == 'failure' || steps.ensure-platforms.outcome == 'failure') }}
+        if: ${{ always() && (steps.merge.outcome == 'failure' || steps.inspect.outcome == 'failure' || steps.ensure-platforms.outcome == 'failure' || steps.download.outcome == 'failure') }}
         shell: bash
         run: |
           echo "message=💥 ${{ matrix.image.name }} (${{ matrix.image.tags[1] }})" >> $GITHUB_OUTPUT
