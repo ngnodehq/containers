@@ -1,5 +1,7 @@
 FROM ghcr.io/ngnodehq/debian:rolling@sha256:03e2ef6966950b3a49dafadb61d416de643cd456f10d074f13346562792e156f
 
+USER root
+
 # Install any runtime dependencies your application needs
 RUN apt-get update && apt-get install -y libssl-dev ca-certificates && rm -rf /var/lib/apt/lists/*
 
