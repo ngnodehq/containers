@@ -44,6 +44,6 @@ jobs:
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
           owner: ${{ github.repository_owner }}
 
-      - uses: amannn/action-semantic-pull-request@v5
+      - uses: amannn/action-semantic-pull-request@e9fabac35e210fea40ca5b14c0da95a099eff26f # v5
         env:
           GITHUB_TOKEN: "${{ steps.app-token.outputs.token }}"
