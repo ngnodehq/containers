@@ -1,4 +1,4 @@
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:7c43ec0f77aa7eb9188ccc01cc7860f222e544829a5f93d8d56daf32a29b3850
+FROM ghcr.io/ngnodehq/debian:rolling@sha256:03e2ef6966950b3a49dafadb61d416de643cd456f10d074f13346562792e156f
 
 ARG VERSION
 
