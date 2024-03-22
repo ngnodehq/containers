@@ -15,7 +15,7 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 # renovate: datasource=github-tags depName=rust-lang/rust
 ENV RUST_VERSION=1.77.0
 # renovate: datasource=github-tags depName=rust-lang/rustup
-ENV RUSTUP_VERSION=1.26.0
+ENV RUSTUP_VERSION=1.27.0
 
 # Install necessary dependencies and tools
 RUN set -eux; \
