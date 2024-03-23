@@ -32,10 +32,11 @@ RUN \
 
 # Stage 2: Create the final image with only the compiled binary
 # Use specific Debian Slim for the final image
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:03e2ef6966950b3a49dafadb61d416de643cd456f10d074f13346562792e156f
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be
 
-# Install runtime dependencies and perform clean-up of unnecessary files
-RUN apt-get update && apt-get install -y libssl-dev ca-certificates && rm -rf /var/lib/apt/lists/*
+USER root
+
+RUN apk add libgcc
 
 # Switch to the non-root user
 USER ngn
