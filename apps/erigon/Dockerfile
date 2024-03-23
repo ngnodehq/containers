@@ -1,4 +1,4 @@
-FROM ghcr.io/ngnodehq/alpine:rolling@sha256:49bc0568dc81907120db4f743a5047f198584f2f2a61e54bc74b769ee4dab050 as builder
+FROM ghcr.io/ngnodehq/wolfi:rolling as builder
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -6,6 +6,7 @@ ARG CHANNEL
 
 # renovate: datasource=golang-version depName=golang
 ENV GO_VERSION=1.22.1
+ENV VERSION=2.59.0
 
 #hadolint ignore=DL3018
 RUN \
@@ -22,11 +23,11 @@ RUN \
   --mount=type=cache,target=/tmp/go-build \
   --mount=type=cache,target=/go/pkg/mod \
   export PATH="$PATH:/usr/local/go/bin" && \
-  make BUILD_TAGS=nosqlite,noboltdb,nosilkworm all && \
+  make BUILD_TAGS=nosqlite,noboltdb,nosilkworm erigon && \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 
-FROM ghcr.io/ngnodehq/alpine:rolling@sha256:49bc0568dc81907120db4f743a5047f198584f2f2a61e54bc74b769ee4dab050
+FROM ghcr.io/ngnodehq/wolfi:rolling
 
 # hadolint ignore=DL3008
 RUN \
@@ -38,7 +39,6 @@ RUN \
 
 # copy compiled artifacts from builder
 COPY --from=builder /app/build/bin/erigon /app/
-COPY --from=builder /app/build/bin/integration /app/
 
 COPY ./apps/erigon/entrypoint.sh /entrypoint.sh
 
