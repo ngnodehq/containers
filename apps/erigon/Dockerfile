@@ -1,4 +1,4 @@
-FROM ghcr.io/ngnodehq/wolfi:rolling as builder
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be as builder
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -27,7 +27,7 @@ RUN \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 
-FROM ghcr.io/ngnodehq/wolfi:rolling
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be
 
 # hadolint ignore=DL3008
 RUN \
