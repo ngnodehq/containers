@@ -1,6 +1,6 @@
 # Stage 1: Building the CELO node
 # Use a specific Alpine image as a base for the builder stage
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:03e2ef6966950b3a49dafadb61d416de643cd456f10d074f13346562792e156f as builder
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be as builder
 
 # Define build arguments like target platform, version, and channel
 ARG TARGETPLATFORM
@@ -12,8 +12,7 @@ ENV GO_VERSION=1.22.1
 
 # Install necessary build dependencies, including Bash
 RUN \
-  apt-get update && apt-get install -y build-essential make coreutils git sed musl-dev && \
-  rm -rf /var/lib/apt/lists/* && \
+  apk --no-cache add build-base linux-headers git bash ca-certificates libstdc++ && \
   curl -fsSl -o /tmp/go.tar.gz https://dl.google.com/go/go${GO_VERSION}.$(echo ${TARGETPLATFORM} | sed 's#\/#-#g').tar.gz && \
   tar -C /usr/local -xzf /tmp/go.tar.gz && \
   curl -fsSL -o /tmp/celo.tar.gz \
@@ -31,7 +30,6 @@ RUN \
   chmod -R u=rwX,go=rX /app
 
 # Stage 2: Create the final image with only the compiled binary
-# Use specific Debian Slim for the final image
 FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be
 
 USER root
