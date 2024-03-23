@@ -1,4 +1,4 @@
-FROM ghcr.io/ngnodehq/alpine:rolling@sha256:49bc0568dc81907120db4f743a5047f198584f2f2a61e54bc74b769ee4dab050 as builder
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be as builder
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -9,7 +9,7 @@ ENV GO_VERSION=1.22.1
 
 #hadolint ignore=DL3018
 RUN \
-  apk --no-cache add build-base linux-headers git bash ca-certificates libstdc++ && \
+  apk add build-base linux-headers git bash ca-certificates libstdc++ && \
   # Download Avalanche source
   curl -fsSl -o /tmp/go.tar.gz https://dl.google.com/go/go${GO_VERSION}.${TARGETPLATFORM/\//-}.tar.gz && \
   tar -C /usr/local -xzf /tmp/go.tar.gz && \
@@ -30,15 +30,7 @@ RUN \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 
-FROM ghcr.io/ngnodehq/alpine:rolling@sha256:49bc0568dc81907120db4f743a5047f198584f2f2a61e54bc74b769ee4dab050
-
-# hadolint ignore=DL3008
-RUN \
-  apk add --no-cache ca-certificates libstdc++ tzdata curl jq bind-tools && \
-  rm -rf \
-    /root/.cache \
-    /root/.cargo \
-    /tmp/*
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be
 
 # Switch to the non-root user
 USER ngn
