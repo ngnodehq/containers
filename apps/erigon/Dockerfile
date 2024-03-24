@@ -4,8 +4,10 @@ ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
+WORKDIR /work
+
 RUN \
-  wget --output-document /tmp/erigon.tar.gz \
+  wget --quiet --output-document /tmp/erigon.tar.gz \
   https://github.com/ledgerwatch/erigon/archive/refs/tags/v${VERSION}.tar.gz && \
   tar xf /tmp/erigon.tar.gz --strip-components=1 -C /work/
 
@@ -22,7 +24,7 @@ USER root
 COPY --from=builder /work/build/bin/erigon /app/
 
 RUN \
-  apk add libstdc++ && \
+  apk add --no-cache libstdc++ && \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 

@@ -4,8 +4,10 @@ ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
+WORKDIR /work
+
 RUN \
-  wget --output-document /tmp/celo.tar.gz \
+  wget --quiet --output-document /tmp/celo.tar.gz \
   https://github.com/celo-org/celo-blockchain/archive/refs/tags/v${VERSION}.tar.gz && \
   tar xf /tmp/celo.tar.gz --strip-components=1 -C /work/
 
@@ -22,7 +24,7 @@ USER root
 COPY --from=builder /work/build/bin/geth /app/
 
 RUN \
-  apk add libgcc && \
+  apk add --no-cache libgcc && \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 

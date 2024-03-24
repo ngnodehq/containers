@@ -3,7 +3,7 @@ FROM ghcr.io/ngnodehq/debian:rolling@sha256:01025d20cf570b310df4f72792c1743112f8
 ARG VERSION
 
 # Install any runtime dependencies your application needs
-RUN apt-get update && apt-get install -y libssl-dev libdw1 ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --no-install-recommends -y libssl-dev libdw1 ca-certificates && rm -rf /var/lib/apt/lists/*
 
 # Copy Aptos config file fullnode.yaml
 COPY ./apps/aptos/fullnode.yaml /config

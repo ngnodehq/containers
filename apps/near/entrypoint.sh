@@ -11,13 +11,13 @@ if [[ ! -f "${NEAR_HOME}/config.json" ]]; then
     /app/neard init ${CHAIN_ID:+--chain-id=localnet}
 fi
 
-if [ -n "$NODE_KEY" ]; then
-    cat << EOF > "$NEAR_HOME/node_key.json"
-{"account_id": "", "public_key": "", "secret_key": "$NODE_KEY"}
+if [[ -n ${NODE_KEY} ]]; then
+    cat <<EOF >"${NEAR_HOME}/node_key.json"
+{"account_id": "", "public_key": "", "secret_key": "${NODE_KEY}"}
 EOF
 fi
 
 exec \
     /app/neard \
-        run \
-        "$@"
+    run \
+    "$@"

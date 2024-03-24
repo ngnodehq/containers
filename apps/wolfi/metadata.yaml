@@ -2,8 +2,8 @@
 app: wolfi
 base: true
 channels:
-  - name: "latest"
-    platforms: ["linux/amd64"]
+  - name: latest
+    platforms: [linux/amd64]
     stable: true
     tests:
       enabled: true

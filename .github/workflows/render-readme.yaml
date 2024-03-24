@@ -1,5 +1,5 @@
 ---
-name: "Render Readme"
+name: Render Readme
 
 on:
   workflow_call:

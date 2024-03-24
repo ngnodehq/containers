@@ -35,7 +35,7 @@ RUN set -eux; \
         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
     esac; \
     url="https://static.rust-lang.org/rustup/archive/$RUSTUP_VERSION/${rustArch}/rustup-init"; \
-    wget "$url"; \
+    wget --quiet "$url"; \
     chmod +x rustup-init; \
     ./rustup-init -y --no-modify-path --profile minimal --default-toolchain $RUST_VERSION --default-host ${rustArch}; \
     rm rustup-init; \
@@ -43,16 +43,13 @@ RUN set -eux; \
     rustup --version; \
     cargo --version; \
     rustc --version; \
-    apt-get remove -y --auto-remove \
-        wget \
-        ; \
     rm -rf /var/lib/apt/lists/*;
 
 # Download NEAR source code and extract to /app
 RUN \
-  apt-get update && apt-get install -y make coreutils git clang libclang-dev libc++-dev libc++abi-dev && \
+  apt-get update && apt-get install -y --no-install-recommends make coreutils git clang libclang-dev libc++-dev libc++abi-dev && \
   rm -rf /var/lib/apt/lists/* && \
-  curl -fsSL -o /tmp/near.tar.gz \
+  wget --quiet --output-document /tmp/near.tar.gz \
   https://github.com/near/nearcore/archive/refs/tags/${VERSION}.tar.gz && \
   tar xf /tmp/near.tar.gz --strip-components=1 -C /app/
 
@@ -76,7 +73,7 @@ WORKDIR /config
 
 USER root
 
-RUN apk add libstdc++
+RUN apk add libstdc++ --no-cache
 
 # Switch to the non-root user
 USER ngn

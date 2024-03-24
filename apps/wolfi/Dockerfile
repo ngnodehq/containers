@@ -9,7 +9,7 @@ USER root
 
 #hadolint ignore=DL3018
 RUN \
-    apk add \
+    apk add --no-cache \
         # 656 kB           # 1.28 MB      # 1.07 MB
         ca-certificates    bash           coreutils \
         # 256 kB           # 564 kB        # 36 kB
@@ -28,6 +28,8 @@ RUN \
     && printf "/bin/bash /scripts/greeting.sh\n" > /etc/profile.d/greeting.sh \
     && printf "umask %d\n" "${UMASK}" > /etc/profile.d/umask.sh \
     && rm -rf /tmp/*
+
+USER ngn
 
 VOLUME ["/config"]
 COPY ./apps/wolfi/scripts /scripts
