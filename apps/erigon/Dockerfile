@@ -1,44 +1,32 @@
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:8991362ac6cbda062e6e9add4cf02cb6ac9c986acfdd20f0470f389f273d8592 as builder
+FROM cgr.dev/chainguard/go:latest-dev as builder
 
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
-# renovate: datasource=golang-version depName=golang
-ENV GO_VERSION=1.22.1
-ENV VERSION=2.59.0
-
-#hadolint ignore=DL3018
 RUN \
-  apk --no-cache add build-base linux-headers git bash ca-certificates libstdc++ && \
-  # Download erigon source
-  curl -fsSl -o /tmp/go.tar.gz https://dl.google.com/go/go${GO_VERSION}.${TARGETPLATFORM/\//-}.tar.gz && \
-  tar -C /usr/local -xzf /tmp/go.tar.gz && \
-  curl -fsSL -o /tmp/erigon.tar.gz \
+  wget --output-document /tmp/erigon.tar.gz \
   https://github.com/ledgerwatch/erigon/archive/refs/tags/v${VERSION}.tar.gz && \
-  tar xf /tmp/erigon.tar.gz --strip-components=1 -C /app/
+  tar xf /tmp/erigon.tar.gz --strip-components=1 -C /work/
 
 RUN \
   --mount=type=cache,target=/root/.cache \
   --mount=type=cache,target=/tmp/go-build \
   --mount=type=cache,target=/go/pkg/mod \
-  export PATH="$PATH:/usr/local/go/bin" && \
-  make BUILD_TAGS=nosqlite,noboltdb,nosilkworm erigon && \
-  chown -R ngn:ngn /app && \
-  chmod -R u=rwX,go=rX /app
+  make BUILD_TAGS=nosqlite,noboltdb,nosilkworm erigon
 
 FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:8991362ac6cbda062e6e9add4cf02cb6ac9c986acfdd20f0470f389f273d8592
 
-# hadolint ignore=DL3008
-RUN \
-  apk add --no-cache ca-certificates libstdc++ tzdata curl jq bind-tools && \
-  rm -rf \
-    /root/.cache \
-    /root/.cargo \
-    /tmp/*
+USER root
 
-# copy compiled artifacts from builder
-COPY --from=builder /app/build/bin/erigon /app/
+COPY --from=builder /work/build/bin/erigon /app/
+
+RUN \
+  apk add libstdc++ && \
+  chown -R ngn:ngn /app && \
+  chmod -R u=rwX,go=rX /app
+
+USER ngn
 
 COPY ./apps/erigon/entrypoint.sh /entrypoint.sh
 
