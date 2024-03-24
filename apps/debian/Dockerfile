@@ -60,7 +60,7 @@ RUN \
     && \
     apt-get -qq update \
     && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         bash \
         ca-certificates \
         coreutils \
@@ -95,6 +95,8 @@ RUN \
         /var/lib/apt/lists/* \
         /var/cache/apt/* \
         /var/tmp/*
+
+USER ngn
 
 ENV LANG en_US.UTF-8
 

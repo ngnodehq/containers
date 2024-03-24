@@ -8,6 +8,7 @@ concurrency:
 on:
   workflow_dispatch:
     inputs:
+      # trunk-ignore(checkov/CKV_GHA_7)
       appsToBuild:
         description: App(s) to build
         required: false
@@ -19,7 +20,7 @@ on:
         default: false
         required: true
   schedule:
-    - cron: "15 */6 * * *"
+    - cron: 15 */6 * * *
 
 jobs:
   simple-checks:

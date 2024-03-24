@@ -4,19 +4,18 @@ ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
+WORKDIR /work
 
 RUN \
   git clone --branch v${VERSION} --single-branch https://github.com/ava-labs/avalanchego.git /work
 
-RUN \
-  --mount=type=cache,target=/root/.cache \
+RUN --mount=type=cache,target=/root/.cache \
   --mount=type=cache,target=/tmp/go-build \
   --mount=type=cache,target=/go/pkg/mod \
-  go mod download  && \
-  cd scripts && \
-  ./build.sh
+  go mod download && \
+  ./scripts/build.sh
 
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:7519ea63a46edff81de13620aa558a4f7e31a1b987e2ce58e6711833f5f9ab34
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be
 
 COPY --from=builder /work/build/avalanchego /app/
 

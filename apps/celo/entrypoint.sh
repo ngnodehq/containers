@@ -10,8 +10,8 @@ sleep 1
 
 exec \
     /app/geth \
-        --datadir=/config \
-        --http \
-        --http.addr=0.0.0.0 \
-        --http.port=8545 \
-        --http.vhosts='*'
+    --datadir=/config \
+    --http \
+    --http.addr=0.0.0.0 \
+    --http.port=8545 \
+    --http.vhosts='*'

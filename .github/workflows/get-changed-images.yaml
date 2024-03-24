@@ -1,14 +1,14 @@
 ---
-name: "Get Changed Images"
+name: Get Changed Images
 
 on:
   workflow_call:
     outputs:
       addedOrModified:
-        description: "Whether any files were added or modified"
+        description: Whether any files were added or modified
         value: ${{ jobs.get-changed-images.outputs.addedOrModified }}
       addedOrModifiedImages:
-        description: "The images that were added or modified"
+        description: The images that were added or modified
         value: ${{ jobs.get-changed-images.outputs.addedOrModifiedImages }}
 
 jobs:
