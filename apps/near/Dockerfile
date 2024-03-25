@@ -1,6 +1,6 @@
 # Stage 1: Building the NEAR node
 # Use a specific Debian slim image as a base for the builder stage
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:01025d20cf570b310df4f72792c1743112f8f19b9772e07bbedc3247df4d1cf6 as builder
+FROM ghcr.io/ngnodehq/debian:rolling@sha256:f67090e13f76d31a02fe09328439826a394f7971688a4f04784905c1874715af as builder
 
 # Define build arguments like target platform, version, and channel
 ARG TARGETPLATFORM
