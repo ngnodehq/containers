@@ -17,6 +17,9 @@ RUN --mount=type=cache,target=/root/.cache \
 
 FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:f282698611f58f7fb3acca63f152ab4392ff08072a8833c3d7c187a480375c8c
 
+USER root
+
+COPY ./apps/avalanche/entrypoint.sh /entrypoint.sh
 COPY --from=builder /work/build/avalanchego /app/
 
 RUN \
@@ -24,8 +27,6 @@ RUN \
   chmod -R u=rwX,go=rX /app
 
 USER ngn
-
-COPY ./apps/avalanche/entrypoint.sh /entrypoint.sh
 
 EXPOSE 9650
 
