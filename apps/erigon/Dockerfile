@@ -17,7 +17,7 @@ RUN \
   --mount=type=cache,target=/go/pkg/mod \
   make BUILD_TAGS=nosqlite,noboltdb,nosilkworm erigon
 
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:7519ea63a46edff81de13620aa558a4f7e31a1b987e2ce58e6711833f5f9ab34
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:cdb90bb5629b311cfb5c35bb135ed1005a65fa6d627fea0bcda3c2479f870fbc
 
 USER root
 

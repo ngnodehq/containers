@@ -15,7 +15,7 @@ RUN --mount=type=cache,target=/root/.cache \
   go mod download && \
   ./scripts/build.sh
 
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:23b2e0c01c7f25e31055e78ad5d2fb59e1a301d8de6e18355a0be21a369e67be
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:cdb90bb5629b311cfb5c35bb135ed1005a65fa6d627fea0bcda3c2479f870fbc
 
 COPY --from=builder /work/build/avalanchego /app/
 
