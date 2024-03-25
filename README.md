@@ -66,9 +66,9 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
 [aptos](https://github.com/ngnodehq/containers/pkgs/container/aptos) | stable | ghcr.io/ngnodehq/aptos |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.10](https://img.shields.io/badge/1.10-blue?style=flat-square) ![1.10.1](https://img.shields.io/badge/1.10.1-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
-[avalanche](https://github.com/ngnodehq/containers/pkgs/container/avalanche) | stable | ghcr.io/ngnodehq/avalanche |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.11](https://img.shields.io/badge/1.11-blue?style=flat-square) ![1.11.3](https://img.shields.io/badge/1.11.3-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[avalanche]() | stable | ghcr.io/ngnodehq/avalanche |
 [celo](https://github.com/ngnodehq/containers/pkgs/container/celo) | stable | ghcr.io/ngnodehq/celo |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.8](https://img.shields.io/badge/1.8-blue?style=flat-square) ![1.8.2](https://img.shields.io/badge/1.8.2-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
-[erigon](https://github.com/ngnodehq/containers/pkgs/container/erigon) | stable | ghcr.io/ngnodehq/erigon |![2](https://img.shields.io/badge/2-blue?style=flat-square) ![2.59](https://img.shields.io/badge/2.59-blue?style=flat-square) ![2.59.0](https://img.shields.io/badge/2.59.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[erigon]() | stable | ghcr.io/ngnodehq/erigon |
 [near](https://github.com/ngnodehq/containers/pkgs/container/near) | stable | ghcr.io/ngnodehq/near |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.38](https://img.shields.io/badge/1.38-blue?style=flat-square) ![1.38.0](https://img.shields.io/badge/1.38.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
 
