@@ -17,6 +17,9 @@ ENV RUST_VERSION=1.77.0
 # renovate: datasource=github-tags depName=rust-lang/rustup
 ENV RUSTUP_VERSION=1.27.0
 
+# trunk-ignore(hadolint)
+USER root
+
 # Install necessary dependencies and tools
 RUN set -eux; \
     apt-get update; \
