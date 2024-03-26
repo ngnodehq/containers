@@ -68,7 +68,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
 
 # Stage 2: Create the final image with only the compiled binary
 # Use specific Debian Slim for the final image
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:f282698611f58f7fb3acca63f152ab4392ff08072a8833c3d7c187a480375c8c
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:78518dcd099645cbd1ee3c706ad9548f5495a83f763cdd58731c31d4884c0011
 
 
 # Set the working directory in the new image
