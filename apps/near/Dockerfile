@@ -27,6 +27,7 @@ USER root
 COPY --from=builder /work/target/release/neard /app
 
 RUN \
+  apk add libstdc++ --no-cache && \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 
