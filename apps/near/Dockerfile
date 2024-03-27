@@ -18,7 +18,7 @@ RUN \
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     make neard
 
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:b3dab1a804c5493172c0a519e7887d1aae8ee76d39be8bd21620a23008f414ae
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:07734e9abfa9bc7425fa92649f714e6f0d8be58af5b6036aa89b7729efde6ef5
 
 WORKDIR /app
 
