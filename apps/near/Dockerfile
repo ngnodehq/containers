@@ -1,4 +1,4 @@
-FROM rust:slim as builder
+FROM rust:slim@sha256:e785e4aa81f87bc1ee02fa2026ffbc491e0410bdaf6652cea74884373f452664 as builder
 
 ARG TARGETPLATFORM
 ARG VERSION
