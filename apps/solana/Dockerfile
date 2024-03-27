@@ -1,20 +1,19 @@
-FROM ghcr.io/ngnodehq/debian:rolling@sha256:7c43ec0f77aa7eb9188ccc01cc7860f222e544829a5f93d8d56daf32a29b3850
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:f485d53a600765e352731985c21552c5b4651ee4afe35897a92971d0fa7f199a
 
 ARG VERSION
 
-# Install any runtime dependencies your application needs
-RUN apt-get update && apt-get install -y libssl-dev ca-certificates lbzip2 procps && rm -rf /var/lib/apt/lists/*
+ENV VERSION=1.17.28
 
-# Create the sysctl.d directory if it doesn't exist
-RUN mkdir -p /etc/sysctl.d
+USER root
 
-# Create the sysctl configuration file
-RUN echo -e "# Increase UDP buffer sizes\nnet.core.rmem_default = 134217728\nnet.core.rmem_max = 134217728\nnet.core.wmem_default = 134217728\nnet.core.wmem_max = 134217728\n\n# Increase memory mapped files limit\nvm.max_map_count = 1000000\n\n# Increase number of allowed open file descriptors\nfs.nr_open = 1000000" > /etc/sysctl.d/21-solana-validator.conf
+RUN \
+  apk add --no-cache \
+    libstdc++ \
+    eudev-libs \
+  &&\
+  mkdir -p /etc/sysctl.d && \
+  printf "# Increase UDP buffer sizes\nnet.core.rmem_default = 134217728\nnet.core.rmem_max = 134217728\nnet.core.wmem_default = 134217728\nnet.core.wmem_max = 134217728\n\n# Increase memory mapped files limit\nvm.max_map_count = 1000000\n\n# Increase number of allowed open file descriptors\nfs.nr_open = 1000000" > /etc/sysctl.d/21-solana-validator.conf
 
-# Switch to the non-root user
-USER ngn
-
-# Copy docker entrypoint
 COPY ./apps/solana/entrypoint.sh /entrypoint.sh
 
 RUN \
@@ -24,13 +23,14 @@ RUN \
   mv /tmp/bin/solana /app/solana && \
   mv /tmp/bin/solana-keygen /app/solana-keygen && \
   mv /tmp/bin/solana-validator /app/solana-validator && \
-  rm -rf /tmp/*
+  rm -rf /tmp/* && \
+  chown -R ngn:ngn /app && \
+  chmod -R u=rwX,go=rX /app
 
-# Expose the ports that Solana node uses
+USER ngn
+
 EXPOSE 8899 8000-8100
 
-# Creates a volume at the directory "/config" inside the container to persist configuration data across container restarts and removals.
 VOLUME ["/config"]
 
-# Command to run the Solana node
 CMD ["/entrypoint.sh"]
