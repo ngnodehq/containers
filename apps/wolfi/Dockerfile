@@ -1,4 +1,4 @@
-FROM cgr.dev/chainguard/wolfi-base@sha256:07d99e3cca939979cbfaa458b702a8910e55f0b6e6a68a2a8ec5ae41f2d9e639
+FROM cgr.dev/chainguard/wolfi-base@sha256:19f93882ea0865d92eb467e4d82eb19bc4f0bc7f153ab770ed8e45761c4febb6
 
 ENV UMASK="0002"
 
