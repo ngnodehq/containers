@@ -22,8 +22,6 @@ RUN \
   chown -R ngn:ngn /app && \
   chmod -R u=rwX,go=rX /app
 
-RUN /entrypoint.sh
-
 USER ngn
 
 EXPOSE 6182 8080
