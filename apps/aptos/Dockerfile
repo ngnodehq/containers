@@ -1,4 +1,4 @@
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:4427d348c37947f0dc74ab09236034bd9937f6187ca0cd59177a9dd4e2c8b590
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:6886069c2a662feb1402295cb79e4015ec9602f0298c5b92beea7b8a7e566209
 
 ARG VERSION
 
