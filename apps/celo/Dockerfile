@@ -17,7 +17,7 @@ RUN \
   --mount=type=cache,target=/go/pkg/mod \
   make all
 
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:caa77b093b0467845ee84d10de6f151a7af84440187104ea7541d72673440c4a
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:c0abd341733a8f068abc5e544ab04ff57964549190be0128f36372b1212b5982
 
 USER root
 
