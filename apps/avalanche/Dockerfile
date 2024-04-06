@@ -15,7 +15,7 @@ RUN --mount=type=cache,target=/root/.cache \
   go mod download && \
   ./scripts/build.sh
 
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:3e3c21405de92beb86df26ec74e63b189edc1e73dd4c5a7fedb9c39218940400
+FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:daf5cfcf5e9c30b460a9a335a24875bceacd752c4e0ab28b5ed80a2af63b5e20
 
 USER root
 
