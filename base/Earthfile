@@ -19,12 +19,39 @@ node:
       icu \
       libbrotlicommon1 \
       libbrotlidec1 \
-      libbrotlienc1 \
       libev \
       libnghttp2-14 \
       libuv \
       nghttp2 \
       nodejs-20=~${NODE_VERSION} \
+      tini && \
+    chown nonroot:nonroot /app
+  USER nonroot
+
+python:
+  ARG --required PYTHON_VERSION
+  USER root
+  RUN PYTHON_SHORT=${PYTHON_VERSION%.*} && \
+    apk add --no-cache \
+      gdbm \
+      glibc \
+      glibc-locale-posix \
+      icu \
+      libbrotlicommon1 \
+      libbrotlidec1 \
+      libexpat1 \
+      libffi \
+      libgcc \
+      libstdc++ \
+      libxcrypt \
+      mpdecimal \
+      ncurses \
+      ncurses-terminfo-base \
+      python-${PYTHON_SHORT}=~${PYTHON_VERSION} \
+      python-${PYTHON_SHORT}-base=~${PYTHON_VERSION} \
+      py${PYTHON_SHORT}-pip \
+      readline \
+      sqlite-libs \
       tini && \
     chown nonroot:nonroot /app
   USER nonroot
