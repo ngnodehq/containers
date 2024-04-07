@@ -9,4 +9,4 @@ curl -s -o /config/genesis.blob https://raw.githubusercontent.com/aptos-labs/apt
 curl -s -o /config/waypoint.txt https://raw.githubusercontent.com/aptos-labs/aptos-networks/main/"${APTOS_NETWORK}"/waypoint.txt
 
 exec \
-    /app/aptos-node --config /config/fullnode.yaml
+    /app/aptos-node --config /app/fullnode.yaml

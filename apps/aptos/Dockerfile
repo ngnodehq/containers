@@ -1,31 +1,33 @@
-FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:b9e4129a3c0250d85e07982a97dabaa3111458d36c148ab3c3b64b2b1b5897d7
+FROM docker.io/chainguard/wolfi-base:latest@sha256:19f93882ea0865d92eb467e4d82eb19bc4f0bc7f153ab770ed8e45761c4febb6
 
 ARG VERSION
 
-USER root
-
-RUN apk add --no-cache \
-  elfutils \
-  wget
-
-COPY ./apps/aptos/fullnode.yaml /config
-
 WORKDIR /app
 
+RUN apk update && \
+  apk add --no-cache \
+    bash \
+    elfutils \
+    tini \
+    wget \
+  && \
+  chown -R unroot:unroot /app && \
+  chmod -R u=rwX,go=rX /app
+
+USER unroot
+
+COPY ./apps/aptos/fullnode.yaml ./
 COPY ./apps/aptos/entrypoint.sh /entrypoint.sh
 
 RUN \
   wget --quiet --output-document /tmp/aptos.tgz \
   https://github.com/aptos-labs/aptos-core/releases/download/aptos-node-v${VERSION}/aptos-node-ubuntu-22.04.tgz  && \
   tar xf /tmp/aptos.tgz -C /app && \
-  rm -rf /tmp/* && \
-  chown -R ngn:ngn /app && \
-  chmod -R u=rwX,go=rX /app
-
-USER ngn
+  rm -rf /tmp/*
 
 EXPOSE 6182 8080
 
 VOLUME ["/config"]
 
+ENTRYPOINT ["tini", "--"]
 CMD ["/entrypoint.sh"]

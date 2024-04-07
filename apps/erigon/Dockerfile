@@ -1,10 +1,8 @@
 FROM cgr.dev/chainguard/go:latest-dev@sha256:ca5ceac3ad62d854b0c9584c38cc7a91c537575f81243c380111f0977cd8cca3 as builder
 
-ARG TARGETPLATFORM
 ARG VERSION
-ARG CHANNEL
 
-WORKDIR /work
+WORKDIR /app
 
 RUN \
   wget --quiet --output-document /tmp/erigon.tar.gz \
@@ -19,17 +17,18 @@ RUN \
 
 FROM ghcr.io/ngnodehq/wolfi:rolling@sha256:b9e4129a3c0250d85e07982a97dabaa3111458d36c148ab3c3b64b2b1b5897d7
 
-USER root
-
-COPY --from=builder /work/build/bin/erigon /app/
-
-RUN \
-  apk add --no-cache libstdc++ && \
-  chown -R ngn:ngn /app && \
+RUN apk update && \
+  apk add --no-cache \
+    bash \
+    libstdc++ \
+    tini \
+  && \
+  chown -R unroot:unroot /app && \
   chmod -R u=rwX,go=rX /app
 
-USER ngn
+USER unroot
 
+COPY --from=builder /work/build/bin/erigon /app/
 COPY ./apps/erigon/entrypoint.sh /entrypoint.sh
 
 EXPOSE 8545 \
@@ -45,4 +44,5 @@ EXPOSE 8545 \
 
 VOLUME ["/config"]
 
+ENTRYPOINT ["tini", "--"]
 CMD ["/entrypoint.sh"]

@@ -1,10 +1,8 @@
 FROM rust:slim@sha256:e785e4aa81f87bc1ee02fa2026ffbc491e0410bdaf6652cea74884373f452664 as builder
 
-ARG TARGETPLATFORM
 ARG VERSION
-ARG CHANNEL
 
-WORKDIR /work
+WORKDIR /app
 
 RUN \
   apt-get update && \
@@ -24,19 +22,23 @@ WORKDIR /app
 
 USER root
 
-COPY --from=builder /work/target/release/neard /app
-
-RUN \
-  apk add libstdc++ --no-cache && \
-  chown -R ngn:ngn /app && \
+RUN apk update && \
+  apk add --no-cache \
+    bash \
+    libstdc++ \
+    tini \
+  && \
+  chown -R unroot:unroot /app && \
   chmod -R u=rwX,go=rX /app
 
-USER ngn
+USER unroot
 
+COPY --from=builder /work/target/release/neard /app
 COPY ./apps/near/entrypoint.sh /entrypoint.sh
 
 EXPOSE 3030 24567
 
 VOLUME ["/config"]
 
+ENTRYPOINT ["tini", "--"]
 CMD ["/entrypoint.sh"]
