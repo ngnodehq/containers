@@ -1,0 +1,73 @@
+VERSION 0.8
+FROM docker.io/chainguard/wolfi-base:latest@sha256:19f93882ea0865d92eb467e4d82eb19bc4f0bc7f153ab770ed8e45761c4febb6
+WORKDIR /app
+ARG --global DIND_IMAGE=earthly/dind:alpine-3.19-docker-25.0.3-r1
+
+all:
+  BUILD +node
+  BUILD +dind-goss
+  BUILD +dind-trivy
+
+node:
+  ARG --required NODE_VERSION
+  USER root
+  RUN apk add --no-cache \
+      c-ares \
+      dumb-init \
+      glibc \
+      glibc-locale-posix \
+      icu \
+      libbrotlicommon1 \
+      libbrotlidec1 \
+      libbrotlienc1 \
+      libev \
+      libnghttp2-14 \
+      libuv \
+      nghttp2 \
+      nodejs-20=~${NODE_VERSION} \
+      tini && \
+    chown nonroot:nonroot /app
+  USER nonroot
+
+dind-goss:
+  FROM --allow-privileged $DIND_IMAGE
+  ARG GOSS_VERSION=0.4.6
+  WORKDIR /goss
+  RUN apk add bash && \
+      ARCH=$(arch) && \
+      if [ "$ARCH" = "x86_64" ]; then \
+        export GOSS_ARCH=amd64; \
+      elif [ "$ARCH" = "arm64" ]; then \
+        export GOSS_ARCH=arm64; \
+      else \
+        echo "Unsupported architecture"; exit 1; \
+      fi && \
+      wget --quiet --output-document goss \
+        https://github.com/goss-org/goss/releases/download/v${GOSS_VERSION}/goss-linux-${GOSS_ARCH} && \
+      chmod +x goss && \
+      wget --quiet --output-document dgoss \
+        https://github.com/goss-org/goss/releases/download/v${GOSS_VERSION}/dgoss && \
+      chmod +x dgoss
+  ENV GOSS_OPTS=--retry-timeout 60s --sleep 2s --color --format documentation
+  ENV GOSS_SLEEP=2
+  ENV GOSS_FILES_STRATEGY=cp
+  ENV GOSS_PATH=/goss/goss
+  ENV CONTAINER_RUNTIME=docker
+  ENV CONTAINER_LOG_OUTPUT=goss_container_log_output
+
+dind-trivy:
+  FROM --allow-privileged $DIND_IMAGE
+  ARG TRIVY_VERSION=0.50.1
+  WORKDIR /trivy
+  RUN apk add bash && \
+      ARCH=$(arch) && \
+      if [ "$ARCH" = "x86_64" ]; then \
+        export TRIVY_ARCH=Linux-64bit; \
+      elif [ "$ARCH" = "arm64" ]; then \
+        export TRIVY_ARCH=Linux-ARM64; \
+      else \
+        echo "Unsupported architecture"; exit 1; \
+      fi && \
+      wget --quiet --output-document trivy.tar.gz \
+        https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_${TRIVY_ARCH}.tar.gz && \
+        tar xvf trivy.tar.gz
