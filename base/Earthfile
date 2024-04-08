@@ -76,7 +76,10 @@ dind-goss:
       chmod +x goss && \
       wget --quiet --output-document dgoss \
         https://github.com/goss-org/goss/releases/download/v${GOSS_VERSION}/dgoss && \
-      chmod +x dgoss
+      chmod +x dgoss && \
+      wget --quiet --output-document dcgoss \
+        https://raw.githubusercontent.com/goss-org/goss/v${GOSS_VERSION}/extras/dcgoss/dcgoss && \
+      chmod +x dcgoss
   ENV GOSS_OPTS=--retry-timeout 60s --sleep 2s --color --format documentation
   ENV GOSS_SLEEP=2
   ENV GOSS_FILES_STRATEGY=cp
