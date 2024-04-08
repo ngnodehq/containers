@@ -12,6 +12,7 @@ node:
   ARG --required NODE_VERSION
   USER root
   RUN apk add --no-cache \
+      bash \
       c-ares \
       dumb-init \
       glibc \
@@ -33,6 +34,7 @@ python:
   USER root
   RUN PYTHON_SHORT=${PYTHON_VERSION%.*} && \
     apk add --no-cache \
+      bash \
       gdbm \
       glibc \
       glibc-locale-posix \
