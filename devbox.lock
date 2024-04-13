@@ -49,6 +49,54 @@
         }
       }
     },
+    "goss@0.4.6": {
+      "last_modified": "2024-03-27T09:47:59Z",
+      "resolved": "github:NixOS/nixpkgs/2230a20f2b5a14f2db3d7f13a2dc3c22517e790b#goss",
+      "source": "devbox-search",
+      "version": "0.4.6",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2h4pxr2ldjdm0lzsp66j371gr3fam7rr-goss-0.4.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2h4pxr2ldjdm0lzsp66j371gr3fam7rr-goss-0.4.6"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dz7adgrz6cwj25xxzgxa3v0w20ypc442-goss-0.4.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dz7adgrz6cwj25xxzgxa3v0w20ypc442-goss-0.4.6"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vign7bm78lk35ia95ywhklgldh251kga-goss-0.4.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/vign7bm78lk35ia95ywhklgldh251kga-goss-0.4.6"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/25irvi6wxd0pi78x9sk39xvq56kx2p71-goss-0.4.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/25irvi6wxd0pi78x9sk39xvq56kx2p71-goss-0.4.6"
+        }
+      }
+    },
     "trunk-io@1.3.0": {
       "last_modified": "2024-04-02T02:53:36Z",
       "resolved": "github:NixOS/nixpkgs/080a4a27f206d07724b88da096e27ef63401a504#trunk-io",
