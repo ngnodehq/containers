@@ -165,7 +165,7 @@ jobs:
         if: ${{ matrix.image.tests_enabled }}
         uses: e1himself/goss-installation-action@8c646222c1cb43528392161394b745cb5d28e8f9 # v1
         with:
-          version: latest
+          version: v0.4.6
 
       - name: Prepare Build Outputs
         id: prepare-build-outputs
