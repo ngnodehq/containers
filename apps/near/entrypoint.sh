@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-#shellcheck disable=SC1091
-test -f "/scripts/umask.sh" && source "/scripts/umask.sh"
-
 NEAR_HOME=${NEAR_HOME:-/config}
 export NEAR_HOME
 
