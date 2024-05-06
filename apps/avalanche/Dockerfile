@@ -7,9 +7,9 @@ WORKDIR /app
 RUN \
   git clone --branch v${VERSION} --single-branch https://github.com/ava-labs/avalanchego.git /app
 
-RUN --mount=type=cache,target=/root/.cache \
+RUN --mount=type=cache,target=/root/go/.cache \
   --mount=type=cache,target=/tmp/go-build \
-  --mount=type=cache,target=/go/pkg/mod \
+  --mount=type=cache,target=/root/go/pkg/mod \
   go mod download && \
   ./scripts/build.sh
 
