@@ -1,8 +1,19 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>ngnodehq/renovate-config",
-    "github>ngnodehq/renovate-config:containers"
-  ],
-  "baseBranches": ["main"]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:best-practices",
+        ":disableRateLimiting",
+        "github>ngnodehq/renovate-config:containers",
+        "github>ngnodehq/renovate-config:labels",
+        "github>ngnodehq/renovate-config:githubActions",
+        "github>ngnodehq/renovate-config:semanticCommits",
+    ],
+    "baseBranches": ["main"],
+    "platform": "github",
+    "platformCommit": true,
+    "onboarding": false,
+    "requireConfig": "optional",
+    "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+    "suppressNotifications": ["prIgnoreNotification"],
+    "ignorePaths": ["**/.archive/**"]
 }
