@@ -25,6 +25,7 @@ node:
       libuv \
       nghttp2 \
       nodejs-20=~${NODE_VERSION} \
+      npm \
       tini && \
     chown nonroot:nonroot /app
   USER nonroot
