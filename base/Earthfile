@@ -50,6 +50,7 @@ python:
       mpdecimal \
       ncurses \
       ncurses-terminfo-base \
+      openssl \
       python-${PYTHON_SHORT}=~${PYTHON_VERSION} \
       python-${PYTHON_SHORT}-base=~${PYTHON_VERSION} \
       py${PYTHON_SHORT}-pip \
