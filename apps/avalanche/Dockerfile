@@ -13,7 +13,7 @@ RUN --mount=type=cache,target=/root/go/.cache \
   go mod download && \
   ./scripts/build.sh
 
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:c93d380c88ee4ccfc4a1827b6ea54debd9ff6e69e64deb53bb75471297ae713a
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:78adc0075d239ee722b5d6ba0ca23e1cd40a30f23aac2e38d48f61a014151277
 
 WORKDIR /app
 
