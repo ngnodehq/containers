@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.10.2/.schema/devbox.schema.json",
-  "packages": ["earthly@0.8.6", "trunk-io@1.3.0", "goss@0.4.6"],
+  "packages": ["earthly@0.8.15", "trunk-io@1.3.0", "goss@0.4.6"],
   "shell": {
     "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
     "scripts": {
