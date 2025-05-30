@@ -16,7 +16,7 @@ RUN \
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     make neard
 
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:9077f2e10d6d8083a8c5d732a3f5698414011e39837e8eb83a06402637a67638
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:81ada6a531d5260a76faff594a2ce471ab73e4436e464a981192faeca1fa20b1
 
 WORKDIR /app
 
