@@ -1,51 +1,51 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "earthly@0.8.6": {
-      "last_modified": "2024-03-22T11:26:23Z",
-      "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#earthly",
+    "earthly@0.8.16": {
+      "last_modified": "2025-07-19T04:40:28Z",
+      "resolved": "github:NixOS/nixpkgs/6b4955211758ba47fac850c040a27f23b9b4008f#earthly",
       "source": "devbox-search",
-      "version": "0.8.6",
+      "version": "0.8.16",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/glkl5l7jpnwvbl6ph7n23gidnq808mzm-earthly-0.8.6",
+              "path": "/nix/store/g867zkdmn83g4jpfp1mnab3xf5acx8f5-earthly-0.8.16",
               "default": true
             }
           ],
-          "store_path": "/nix/store/glkl5l7jpnwvbl6ph7n23gidnq808mzm-earthly-0.8.6"
+          "store_path": "/nix/store/g867zkdmn83g4jpfp1mnab3xf5acx8f5-earthly-0.8.16"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/2aw2mc09lj0jca6rmcrfynd0zd99jkyi-earthly-0.8.6",
+              "path": "/nix/store/7lw4v146g0rll4c64m91pc06kcpimbcz-earthly-0.8.16",
               "default": true
             }
           ],
-          "store_path": "/nix/store/2aw2mc09lj0jca6rmcrfynd0zd99jkyi-earthly-0.8.6"
+          "store_path": "/nix/store/7lw4v146g0rll4c64m91pc06kcpimbcz-earthly-0.8.16"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/visij6j4ys2f38mphbw4p5cn0ql4c1rh-earthly-0.8.6",
+              "path": "/nix/store/rip5m13xdwv002gbl610kwnxy6w682hm-earthly-0.8.16",
               "default": true
             }
           ],
-          "store_path": "/nix/store/visij6j4ys2f38mphbw4p5cn0ql4c1rh-earthly-0.8.6"
+          "store_path": "/nix/store/rip5m13xdwv002gbl610kwnxy6w682hm-earthly-0.8.16"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/v8r8x1nww7lcza50w2z98c9kff9kq4sm-earthly-0.8.6",
+              "path": "/nix/store/wmrlqzxskp35fmbw878va8mpncyfa1rj-earthly-0.8.16",
               "default": true
             }
           ],
-          "store_path": "/nix/store/v8r8x1nww7lcza50w2z98c9kff9kq4sm-earthly-0.8.6"
+          "store_path": "/nix/store/wmrlqzxskp35fmbw878va8mpncyfa1rj-earthly-0.8.16"
         }
       }
     },
