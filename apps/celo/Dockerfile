@@ -15,7 +15,7 @@ RUN \
   --mount=type=cache,target=/root/go/pkg/mod \
   make all
 
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:2579b5f7c297fef41c6e862812933fd30bf5296515e6abb1969efa5e1103a47f
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:9b359e55a1d5dcdcab3c0534a5184386ebaa2661f8e24bc27355bc6bdcd7e843
 
 WORKDIR /app
 
