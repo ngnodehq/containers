@@ -1,4 +1,4 @@
-FROM rust:slim@sha256:725959da2e3079f69c33ff2b9b0826d44912e45866cc89239b8700544946aefc as builder
+FROM rust:slim@sha256:acd31912499aa22b34ead9bb9869d02eead249d84e51d36238bd3f2245e88d2a as builder
 
 ARG VERSION
 
