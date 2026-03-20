@@ -1,4 +1,4 @@
-FROM cgr.dev/chainguard/go:latest-dev@sha256:2ffc4889f3c58e19ea0a9d12d22ca6c8be4f5c260cf00f691200097920470d7e as builder
+FROM cgr.dev/chainguard/go:latest-dev@sha256:807fcbb0e9849497e6fbc4ec04e1aa4bfe658b5a9d6e01cca48664c9648cc4af as builder
 
 ARG VERSION
 
