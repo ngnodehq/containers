@@ -17,15 +17,15 @@ concurrency:
 
 jobs:
   simple-checks:
-    uses: ngnodehq/containers/.github/workflows/simple-checks.yaml@main
+    uses: ngnodehq/containers/.github/workflows/simple-checks.yaml@308dcd7b2c6263fd13925ca035ac560f7350b272 # main
 
   get-changed-images:
-    uses: ngnodehq/containers/.github/workflows/get-changed-images.yaml@main
+    uses: ngnodehq/containers/.github/workflows/get-changed-images.yaml@308dcd7b2c6263fd13925ca035ac560f7350b272 # main
 
   build-images:
     needs: [simple-checks, get-changed-images]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: ngnodehq/containers/.github/workflows/build-images.yaml@main
+    uses: ngnodehq/containers/.github/workflows/build-images.yaml@308dcd7b2c6263fd13925ca035ac560f7350b272 # main
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
