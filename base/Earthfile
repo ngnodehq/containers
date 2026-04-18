@@ -1,5 +1,5 @@
 VERSION 0.8
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:1af610c4a70668dad46159ee178b20378c79a49b554f76405670fc442d30183a
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:70750dfde91b4c5804b4df269121253fbdff73a9122925c7acc067aa33f9f55e
 WORKDIR /app
 ARG --global DIND_IMAGE=earthly/dind:alpine-3.19-docker-25.0.3-r1
 
