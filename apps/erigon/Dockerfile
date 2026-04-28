@@ -15,7 +15,7 @@ RUN \
   --mount=type=cache,target=/root/go/pkg/mod \
   make BUILD_TAGS=nosqlite,noboltdb,nosilkworm erigon
 
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:70750dfde91b4c5804b4df269121253fbdff73a9122925c7acc067aa33f9f55e
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:d6e31fc9dad5fd76d7160ba833502865e17c226ab261cb6893a0624b68198d7b
 
 WORKDIR /app
 
