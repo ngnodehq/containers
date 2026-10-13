@@ -49,51 +49,41 @@
         }
       }
     },
-    "goss@0.4.6": {
-      "last_modified": "2024-03-27T09:47:59Z",
-      "resolved": "github:NixOS/nixpkgs/2230a20f2b5a14f2db3d7f13a2dc3c22517e790b#goss",
+    "goss@0.4.10": {
+      "last_modified": "2026-10-08T19:21:32Z",
+      "resolved": "github:NixOS/nixpkgs/8edc0c72e3a38faf5434e40d1f19431125fe4b30#goss",
       "source": "devbox-search",
-      "version": "0.4.6",
+      "version": "0.4.10",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/2h4pxr2ldjdm0lzsp66j371gr3fam7rr-goss-0.4.6",
+              "path": "/nix/store/mybg1f95q1jj23kbswvx13rlcbwkbajf-goss-0.4.10",
               "default": true
             }
           ],
-          "store_path": "/nix/store/2h4pxr2ldjdm0lzsp66j371gr3fam7rr-goss-0.4.6"
+          "store_path": "/nix/store/mybg1f95q1jj23kbswvx13rlcbwkbajf-goss-0.4.10"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/dz7adgrz6cwj25xxzgxa3v0w20ypc442-goss-0.4.6",
+              "path": "/nix/store/xjzysrrah1j2v1m9x6gd5hpcckn24wfm-goss-0.4.10",
               "default": true
             }
           ],
-          "store_path": "/nix/store/dz7adgrz6cwj25xxzgxa3v0w20ypc442-goss-0.4.6"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/vign7bm78lk35ia95ywhklgldh251kga-goss-0.4.6",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/vign7bm78lk35ia95ywhklgldh251kga-goss-0.4.6"
+          "store_path": "/nix/store/xjzysrrah1j2v1m9x6gd5hpcckn24wfm-goss-0.4.10"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/25irvi6wxd0pi78x9sk39xvq56kx2p71-goss-0.4.6",
+              "path": "/nix/store/1n06wgqsjq9kdmiy3xpv1shmcx9bvnk5-goss-0.4.10",
               "default": true
             }
           ],
-          "store_path": "/nix/store/25irvi6wxd0pi78x9sk39xvq56kx2p71-goss-0.4.6"
+          "store_path": "/nix/store/1n06wgqsjq9kdmiy3xpv1shmcx9bvnk5-goss-0.4.10"
         }
       }
     },
