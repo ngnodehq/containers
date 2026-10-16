@@ -97,51 +97,41 @@
         }
       }
     },
-    "trunk-io@1.3.0": {
-      "last_modified": "2024-04-02T02:53:36Z",
-      "resolved": "github:NixOS/nixpkgs/080a4a27f206d07724b88da096e27ef63401a504#trunk-io",
+    "trunk-io@1.3.5": {
+      "last_modified": "2026-10-10T12:58:50Z",
+      "resolved": "github:NixOS/nixpkgs/ca1659429c950a11a565b5764e37a1b704e17ec8#trunk-io",
       "source": "devbox-search",
-      "version": "1.3.0",
+      "version": "1.3.5",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ybyk4q81h7bcwb6dcbha7x8fjxqzvp59-trunk-io-1.3.0",
+              "path": "/nix/store/f4wrna3qlb1n5cpmswrn1c1xqz0zfagp-trunk-io-1.3.5",
               "default": true
             }
           ],
-          "store_path": "/nix/store/ybyk4q81h7bcwb6dcbha7x8fjxqzvp59-trunk-io-1.3.0"
+          "store_path": "/nix/store/f4wrna3qlb1n5cpmswrn1c1xqz0zfagp-trunk-io-1.3.5"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/i53ih7b8ys6klb0wiflvgxbzanqaj5qj-trunk-io-1.3.0",
+              "path": "/nix/store/nskq855kdc87a4ahmb515wcmqpviwnvb-trunk-io-1.3.5",
               "default": true
             }
           ],
-          "store_path": "/nix/store/i53ih7b8ys6klb0wiflvgxbzanqaj5qj-trunk-io-1.3.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/f2v17bjarjzwz7id8i4fpibij28v6lhf-trunk-io-1.3.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/f2v17bjarjzwz7id8i4fpibij28v6lhf-trunk-io-1.3.0"
+          "store_path": "/nix/store/nskq855kdc87a4ahmb515wcmqpviwnvb-trunk-io-1.3.5"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/i8ma8f2syq00xa6iidv8vxcs8wjyzvl1-trunk-io-1.3.0",
+              "path": "/nix/store/cr64mxq294nk00vp4icl0k6w2cmsb7ql-trunk-io-1.3.5",
               "default": true
             }
           ],
-          "store_path": "/nix/store/i8ma8f2syq00xa6iidv8vxcs8wjyzvl1-trunk-io-1.3.0"
+          "store_path": "/nix/store/cr64mxq294nk00vp4icl0k6w2cmsb7ql-trunk-io-1.3.5"
         }
       }
     }
