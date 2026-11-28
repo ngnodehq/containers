@@ -25,12 +25,12 @@ on:
 jobs:
   simple-checks:
     name: Simple Checks
-    uses: ngnodehq/containers/.github/workflows/simple-checks.yaml@main
+    uses: ngnodehq/containers/.github/workflows/simple-checks.yaml@d2b9e32daa7efa62cbf2a7bb6ddf9ef76e7a9152 # main
 
   build-images:
     name: Build Images
     needs: simple-checks
-    uses: ngnodehq/containers/.github/workflows/build-images.yaml@main
+    uses: ngnodehq/containers/.github/workflows/build-images.yaml@d2b9e32daa7efa62cbf2a7bb6ddf9ef76e7a9152 # main
     secrets: inherit
     permissions:
       contents: read
